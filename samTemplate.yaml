@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: CD Demo Lambda
+Resources:
+  CDDemoLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.6
+      AutoPublishAlias: live
+      CodeUri: ./LambdaCode
+      Description: 'Lambda function for CD Demo'
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::601598172471:role/LambdaSamrole'
+      DeploymentPreference:
+          Type: Linear10PercentEvery1Minute
+      Events:
+        getcontent:
+          Type: Api
+          Properties:
+            Path: /getcontent
+            Method: get
+      
