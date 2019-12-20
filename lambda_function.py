@@ -5,5 +5,5 @@ def lambda_handler(event, context):
     # TODO implement
     return {
         'statusCode': 200,
-        'body': json.dumps('Hello this is from AWS SAM Lambda based Application !! post Demo Test')
+        'body': json.dumps('Hello this is from AWS SAM Lambda based Application !! Demo Test')
     }
